@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from website.models import Gallery_image
-from grocer.models import *
+
 # Create your views here.
 
 
@@ -21,35 +21,9 @@ def landing(request):
     return render(request, 'website/landing.html', context)
 
 
-## shop
-def shop(request):
-    context={}
-
-    return render(request, 'website/shop.html', context)
-
-
-## wine
-def wine(request):
-    reds = Wine.objects.filter(is_shown = True, wine_type="RED")
-    bubbles = Wine.objects.filter(is_shown = True)
-    whites = Wine.objects.filter(is_shown = True)
-    roses = Wine.objects.filter(is_shown = True)
-    sweets = Wine.objects.filter(is_shown = True)
-
-    context={
-        'reds':reds,
-        'bubbles':bubbles,
-        'whites':whites,
-        'roses':roses,
-        'sweets':sweets,
-        }
-
-    return render(request, 'website/wine.html', context)
-
-
 ## menu
 def menu(request):
-    dishes = Dish.objects.all()
+    dishes = None
     context={
         'dishes':dishes,
     }
