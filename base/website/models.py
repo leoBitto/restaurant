@@ -21,46 +21,85 @@ class Contact(models.Model):
     mail = models.CharField(max_length=50, blank=True, null=True)
 
 
+class Opening_hour(models.Model):
+    open = models.TextField(blank=True, null=True)
+
 
 ### 
-class Dish(models.Model):
-
-    choices = (
-        (ENTREE := "ENTREE", 'Entree'),
-        (FIRST  := "FIRST", 'First'),
-        (SECOND  := "SECOND", 'Second'),
-        (SIDE  := "SIDE", 'Side'),
-        (SWEET  := "SWEET", 'Sweet'),
-    )
-        
+class Entree(models.Model):
     name = models.CharField(max_length=100, null=True)
     price = models.FloatField()
-    description = models.TextField()
-    type = models.CharField(max_length=10, choices=choices, default=ENTREE)
+    description = models.TextField(blank = True, null = True)
+
+    def __str__(self):
+        return self.name
+
+
+class First_dish(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    price = models.FloatField()
+    description = models.TextField(blank = True, null = True)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Dishes'
+        verbose_name_plural = 'First_dishes'
+
+
+class Second_dish(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    price = models.FloatField()
+    description = models.TextField(blank = True, null = True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Second_dishes'
+
+
+class Side_dish(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    price = models.FloatField()
+    description = models.TextField(blank = True, null = True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Side_dishes'
+
+
+class Dessert(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    price = models.FloatField()
+    description = models.TextField(blank = True, null = True)
+
+    def __str__(self):
+        return self.name
 
 
 class Menu(models.Model):
-    is_lunch = models.BooleanField(default=False)
-    dishes = models.ManyToManyField(Dish)
+    entree = models.ManyToManyField(Entree)
+    first_dish = models.ManyToManyField(First_dish)
+    second_dish = models.ManyToManyField(Second_dish)
+    side_dish = models.ManyToManyField(Side_dish)
+    dessert = models.ManyToManyField(Dessert)
     pub_date = models.DateField(auto_now=True, editable=True)
     
-
     class Meta:
         ordering = ['-pub_date']
         verbose_name_plural = 'Menues'
     
 
+
 class Wine(models.Model):
     name = models.CharField(max_length=100, null=True)
     cellar = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField()
-    price = models.FloatField()
+    price_from_vendor = models.IntegerField()
+    price_to_public = models.FloatField()
     in_our_cellar = models.IntegerField(blank = True, null=True)
     year = models.IntegerField(blank=True, null=True)
 
