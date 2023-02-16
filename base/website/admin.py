@@ -1,5 +1,6 @@
-from django.contrib import admin, sites
+from django.contrib import admin
 from .models import *
+from django.db.models import Sum
 
 class Gallery_imageAdmin(admin.ModelAdmin):
     list_display=('header', 'description', 'is_first', 'show_image')
@@ -83,7 +84,9 @@ class WineAdmin(admin.ModelAdmin):
 
     is_in_stock.boolean = True
 
-    list_display=('name',
+    
+    list_display=(
+                'name',
                 'cellar',
                 'year',
                 'price_from_vendor', 
@@ -91,12 +94,18 @@ class WineAdmin(admin.ModelAdmin):
                 'bottles_in_our_cellar',
                 'earnings_per_bottle',
                 'total_value',
-                'is_in_stock', )
-    list_filter=('cellar','year', 
-                IsInStockFilter,
-    )
+                'is_in_stock',
+                
+                )
 
+    list_filter=(
+        'cellar',
+        'year', 
+        IsInStockFilter,
+    )
     
+
+
 
 # Register your models here.
 admin.site.register(Gallery_image, Gallery_imageAdmin)
@@ -112,7 +121,3 @@ admin.site.register(Opening_hour)
 
 
 
-
-# mysite = WebsiteAdminSite()
-# admin.site = mysite
-# sites.site = mysite
