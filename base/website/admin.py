@@ -1,4 +1,4 @@
-from django.contrib import admin
+from django.contrib import admin, sites
 from .models import *
 
 class Gallery_imageAdmin(admin.ModelAdmin):
@@ -45,19 +45,58 @@ class DessertAdmin(admin.ModelAdmin):
 
 class MenuAdmin(admin.ModelAdmin):
     list_display=('id','pub_date')
+    raw_id_fields = ["dessert"]
+    
     
 
 
 class WineAdmin(admin.ModelAdmin):
+
+    class IsInStockFilter(admin.SimpleListFilter):
+        title='is_in_stock'
+        parameter_name = 'is_in_stock'
+
+        def lookups(self, request, model_admin):
+            return (
+                ('Yes', 'Yes'),
+                ('No', 'No'),
+            )
+
+        def queryset(self, request, queryset):
+            value = self.value()
+            if value == 'Yes':
+                return queryset.filter(bottles_in_our_cellar__gt = 0 )
+            elif value == 'No':
+                return queryset.exclude(bottles_in_our_cellar__gt = 0)
+            else:
+                queryset
+
+
+    def earnings_per_bottle(self, obj):
+        return obj.price_to_public - obj.price_from_vendor
+
+    def total_value(self, obj):
+        return obj.price_from_vendor * obj.bottles_in_our_cellar
+
+    def is_in_stock(self, obj):
+        return obj.bottles_in_our_cellar > 0
+
+    is_in_stock.boolean = True
+
     list_display=('name',
                 'cellar',
                 'year',
-                'description',
                 'price_from_vendor', 
                 'price_to_public', 
-                'in_our_cellar', )
-    list_filter=('cellar','year')
+                'bottles_in_our_cellar',
+                'earnings_per_bottle',
+                'total_value',
+                'is_in_stock', )
+    list_filter=('cellar','year', 
+                IsInStockFilter,
+    )
 
+    
 
 # Register your models here.
 admin.site.register(Gallery_image, Gallery_imageAdmin)
@@ -72,25 +111,8 @@ admin.site.register(Contact)
 admin.site.register(Opening_hour)
 
 
-# class WebsiteAdminSite(AdminSite):
-#     def get_app_list(self, request):
-#         """
-#         Return a sorted list of all the installed apps that have been
-#         registered in this site.
-#         """
-#         ordering = {
-#             "Event heros": 1,
-#             "Event villains": 2,
-#             "Epics": 3,
-#             "Events": 4
-#         }
-#         app_dict = self._build_app_dict(request)
-#         # a.sort(key=lambda x: b.index(x[0]))
-#         # Sort the apps alphabetically.
-#         app_list = sorted(app_dict.values(), key=lambda x: x['name'].lower())
 
-#         # Sort the models alphabetically within each app.
-#         for app in app_list:
-#             app['models'].sort(key=lambda x: ordering[x['name']])
 
-#         return app_list
+# mysite = WebsiteAdminSite()
+# admin.site = mysite
+# sites.site = mysite

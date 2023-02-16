@@ -25,7 +25,6 @@ class Opening_hour(models.Model):
     open = models.TextField(blank=True, null=True)
 
 
-### 
 class Entree(models.Model):
     name = models.CharField(max_length=100, null=True)
     price = models.FloatField()
@@ -77,15 +76,15 @@ class Dessert(models.Model):
     description = models.TextField(blank = True, null = True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
 
 class Menu(models.Model):
-    entree = models.ManyToManyField(Entree)
-    first_dish = models.ManyToManyField(First_dish)
-    second_dish = models.ManyToManyField(Second_dish)
-    side_dish = models.ManyToManyField(Side_dish)
-    dessert = models.ManyToManyField(Dessert)
+    entree = models.ManyToManyField(Entree, blank = True)
+    first_dish = models.ManyToManyField(First_dish, blank = True)
+    second_dish = models.ManyToManyField(Second_dish, blank = True)
+    side_dish = models.ManyToManyField(Side_dish, blank = True)
+    dessert = models.ManyToManyField(Dessert, blank = True)
     pub_date = models.DateField(auto_now=True, editable=True)
     
     class Meta:
@@ -93,15 +92,15 @@ class Menu(models.Model):
         verbose_name_plural = 'Menues'
     
 
-
 class Wine(models.Model):
     name = models.CharField(max_length=100, null=True)
     cellar = models.CharField(max_length=100, blank=True, null=True)
-    description = models.TextField()
+    description = models.TextField(blank=True, null = True)
     price_from_vendor = models.IntegerField()
     price_to_public = models.FloatField()
-    in_our_cellar = models.IntegerField(blank = True, null=True)
+    bottles_in_our_cellar = models.IntegerField(blank = True, null=True)
     year = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.name}, {self.cellar}"
+
