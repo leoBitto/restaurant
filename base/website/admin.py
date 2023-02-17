@@ -6,6 +6,14 @@ class Gallery_imageAdmin(admin.ModelAdmin):
     list_display=('header', 'description', 'is_first', 'show_image')
 
 
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('id', 'phone', 'mail')
+
+
+class OpeningHoursAdmin(admin.ModelAdmin):
+    list_display = ('id', 'weekdays', 'weekend', 'closing_day')
+
+
 class EntreeAdmin(admin.ModelAdmin):
     list_display=('name', 
                 'price', 
@@ -72,13 +80,6 @@ class WineAdmin(admin.ModelAdmin):
             else:
                 queryset
 
-
-    def earnings_per_bottle(self, obj):
-        return obj.price_to_public - obj.price_from_vendor
-
-    def total_value(self, obj):
-        return obj.price_from_vendor * obj.bottles_in_our_cellar
-
     def is_in_stock(self, obj):
         return obj.bottles_in_our_cellar > 0
 
@@ -116,8 +117,8 @@ admin.site.register(Second_dish, SecondAdmin)
 admin.site.register(Side_dish, SideAdmin)
 admin.site.register(Dessert, DessertAdmin)
 admin.site.register(Wine, WineAdmin)
-admin.site.register(Contact)
-admin.site.register(Opening_hour)
+admin.site.register(Contact, ContactAdmin)
+admin.site.register(Opening_hour, OpeningHoursAdmin)
 
 
 

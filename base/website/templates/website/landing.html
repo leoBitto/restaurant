@@ -3,31 +3,25 @@
 
 {% block content %} 
 
+<div class="d-flex flex-column justify-content-around"style=" min-height:90vh">
+<section id="carousel" class=" d-flex carousel carousel-dark slide w-60 m-3 px-3" data-bs-interval="false">
+    
+    <div class="carousel-inner " style="width:100%; height:100%;">
 
-<section id="carousel" class="carousel carousel-dark slide pb-5 px-5 mx-4" data-bs-interval="false">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        
-        {% for i in num_of_images %}
-        <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{i}}" ></button>
-        {% endfor %}
-
-    </div>
-    <div class="carousel-inner" style="width:100%; height:100%;">
-
-        <div class="carousel-item active" style="width:100%; height:100%;">
-            <img src="{{ first_image.img.url }}" class="d-block w-100" style="width:100%; height:100%; object-fit:cover">
+        <!-- FIRST IMAGE -->
+        <div class="carousel-item active " style="width:100%; height:60vh;">
+            <img src="{{ first_image.img.url }}" class="d-block w-100 " style="width:100%; height:100%; object-fit:cover">
             <div class="carousel-caption d-none d-md-block">
                 <h5>{{ first_image.header }}</h5>
                 <p>{{ first_image.description }}</p>
             </div>
         </div>
 
-
+        <!-- REST OF THE IMAGES -->
         {% for image in images %}
 
-        <div class="carousel-item" style="width:100%; height:100%;">
-            <img src="{{ image.img.url }}" class="d-block w-100"  style="width:100%; height:100%; object-fit:cover">
+        <div class="carousel-item " style="width:100%; height:60vh;">
+            <img src="{{ image.img.url }}" class="d-block w-100 "  style="width:100%; height:100%; object-fit:cover">
             <div class="carousel-caption d-none d-md-block">
                 <h5>{{ image.header }}</h5>
                 <p>{{ image.description }}</p>
@@ -37,6 +31,7 @@
         {% endfor %}
 
     </div>
+    <!-- BUTTONS OF THE CAROUSEL -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -45,9 +40,47 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
+
+
+    <!-- INDICATORS OF THE CAROUSEL -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        
+        {% for i in num_of_images %}
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{i}}" ></button>
+        {% endfor %}
+
+    </div>
+
+
 </section>
 
 
+<div class="d-flex flex-column flex-md-row justify-content-around text-center">
+    <!-- LOCATION -->
+    <div class="d-flex flex-column m-auto mt-3">
+        <h6> INDIRIZZO  </h6>
+        <span> Via del Molino, 87 </span>
+        <span> 50041 Calenzano FIRENZE</span>
+    </div>
+    <!-- END - LOCATION -->
 
+    <!-- CONTACTS -->
+    <div class="d-flex flex-column m-auto mt-3">
+        <h6> CONTATTI  </h6>
+        <span> {{ contacts.phone }} </span>
+        <span> {{ contacts.mail }} </span>
+    </div>
+    <!-- END - CONTACTS -->
 
+    <!-- OPENING HOURS -->
+    <div class="d-flex flex-column m-auto mt-3">
+        <h6> ORARI D'APERTURA  </h6>
+        <span> LUN - VEN | {{opening_hours.weekdays}} </span>
+        <span> SAB - DOM | {{opening_hours.weekend}} </span>
+        <span> CHIUSI IL : {{opening_hours.closing_day}} </span>
+    </div>
+    <!-- END - OPENING HOURS -->
+</div>
+</div>
 {% endblock %}

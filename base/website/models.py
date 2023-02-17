@@ -17,13 +17,18 @@ class Gallery_image(models.Model):
 
 class Contact(models.Model):
     phone = models.CharField(max_length=100, blank=True, null=True)
-    address = models.CharField(max_length=100, blank=True, null=True)
     mail = models.CharField(max_length=50, blank=True, null=True)
-
+    
+    def __str__(self):
+        return "Contacts"
 
 class Opening_hour(models.Model):
-    open = models.TextField(blank=True, null=True)
-
+    weekdays = models.CharField(max_length = 200, blank=True, null=True)
+    weekend = models.CharField(max_length=300, blank=True, null=True)
+    closing_day = models.CharField(max_length=200, blank=True, null=True)
+    
+    def __str__(self):
+        return "Opening hours"
 
 class Entree(models.Model):
     name = models.CharField(max_length=100, null=True)
@@ -100,6 +105,15 @@ class Wine(models.Model):
     price_to_public = models.FloatField()
     bottles_in_our_cellar = models.IntegerField(blank = True, null=True)
     year = models.IntegerField(blank=True, null=True)
+
+    @property
+    def earnings_per_bottle(self):
+        return self.price_to_public - self.price_from_vendor
+
+    @property
+    def total_value(self):
+        return self.price_from_vendor * self.bottles_in_our_cellar
+
 
     def __str__(self):
         return f"{self.name}, {self.cellar}"
