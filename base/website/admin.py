@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import *
-from django.db.models import Sum
+
 
 class Gallery_imageAdmin(admin.ModelAdmin):
     list_display=('header', 'description', 'is_first', 'show_image')
@@ -54,8 +54,10 @@ class DessertAdmin(admin.ModelAdmin):
 
 class MenuAdmin(admin.ModelAdmin):
     list_display=('id','pub_date')
-    raw_id_fields = ["dessert"]
     
+    
+class BusinessMenuAdmin(admin.ModelAdmin):
+    list_display=('id','pub_date')
     
 
 
@@ -119,6 +121,6 @@ admin.site.register(Dessert, DessertAdmin)
 admin.site.register(Wine, WineAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Opening_hour, OpeningHoursAdmin)
-
+admin.site.register(Business_Menu, BusinessMenuAdmin)
 
 

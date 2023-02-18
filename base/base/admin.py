@@ -8,17 +8,18 @@ class WebsiteAdminSite(admin.AdminSite):
         """
         ordering = {
             "Menues": 1,
-            "Entrees": 2,
-            "First_dishes": 3,
-            "Second_dishes": 4,
-            "Side_dishes": 5,
-            "Desserts": 6,
-            "Wines": 7,
-            "Opening_hours": 8,
-            "Contacts": 9,
-            "Gallery_images": 10,
-            "Groups":11,
-            "Users":12,
+            "Business_Menues": 2,
+            "Entrees": 3,
+            "First_dishes": 4,
+            "Second_dishes": 5,
+            "Side_dishes": 6,
+            "Desserts": 7,
+            "Wines": 8,
+            "Opening_hours": 9,
+            "Contacts": 10,
+            "Gallery_images": 11,
+            "Groups":12,
+            "Users":13,
         }
         app_dict = self._build_app_dict(request)
         

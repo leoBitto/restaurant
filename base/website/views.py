@@ -33,10 +33,49 @@ def landing(request):
 
 ## menu
 def menu(request):
-    dishes = None
+    menu = Menu.objects.latest('pub_date')
+
+    entrees = menu.entree.all()
+    first_dishes = menu.first_dish.all()
+    second_dishes = menu.second_dish.all()
+    side_dishes = menu.side_dish.all()
+    desserts = menu.dessert.all()
+
+    title = "Il Nostro Menù"
+
     context={
-        'dishes':dishes,
+        'entrees':entrees,
+        'first_dishes':first_dishes,
+        'second_dishes':second_dishes,
+        'side_dishes':side_dishes,
+        'desserts':desserts,
+        'title':title,
     }
+
+    return render(request, 'website/menu.html', context)
+
+
+## menu
+def business_menu(request):
+    menu = Business_Menu.objects.latest('pub_date')
+    
+    entrees = menu.entree.all()
+    first_dishes = menu.first_dish.all()
+    second_dishes = menu.second_dish.all()
+    side_dishes = menu.side_dish.all()
+    desserts = menu.dessert.all()
+
+    title = "Menù del pranzo"
+
+    context={
+        'entrees':entrees,
+        'first_dishes':first_dishes,
+        'second_dishes':second_dishes,
+        'side_dishes':side_dishes,
+        'desserts':desserts,
+        'title':title,
+    }
+
 
     return render(request, 'website/menu.html', context)
 
