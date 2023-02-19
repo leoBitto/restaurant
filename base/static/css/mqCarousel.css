@@ -1,9 +1,61 @@
-/* On screens that are 768px or more,  */
+/* On screens that are 1440px or more, 
+@media screen and (min-width: 1440px) {
+ 
+  .carousel-control-prev {
+    margin-left: -80px;
+  }
+  
+  .carousel-control-next {
+    margin-right: -80px;
+  }
+}
+
+
+/* On screens that are 768px or more,  
 @media screen and (min-width: 768px) {
     #carousel {
      padding:0px;
      
     }
+    .carousel-control-prev {
+      margin-left: -60px;
+    }
+    
+    .carousel-control-next {
+      margin-right: -60px;
+    }
+  }
+
+
+/* On screens that are 526px or more,  
+@media screen and (min-width: 526px) {
+  
+  .carousel-control-prev {
+    margin-left: -50px;
   }
   
+  .carousel-control-next {
+    margin-right: -50px;
+  }
+}
+
+
+/* On screens that are 526px or less,  
+@media screen and (max-width: 526px) {
   
+  .carousel-control-prev {
+    margin-left: -15px;
+  }
+  
+  .carousel-control-next {
+    margin-right: -15px;
+  }
+}
+
+  
+*/
+
+
+.carousel-control-prev, .carousel-control-next {
+  position: inherit;
+}

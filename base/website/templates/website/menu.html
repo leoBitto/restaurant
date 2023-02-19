@@ -3,53 +3,46 @@
 
 {% block content %} 
 <h2 class="text-center fs-1 mx-auto p-4"> {{title}} </h2>
-<!-- TITLES OF THE COLUMNS, SHOULD I ADD THE ALLERGENS??
-<div class="flex-row d-flex justify-content-around fw-lighter  m-3">
-        <span class="col-3 text-center"> nome </span>   
-        <span class="col-3 d-none d-md-block text-center"> cantina </span> 
-        <span class="col-3 text-center"> anno </span> 
-        <span class="col-3 d-none d-sm-block text-center"> prezzo € </span> 
-</div>-->
 
 <ul class="list-group list-group-flush m-3 ">
 <h3 class="text-center fs-3 mx-auto p-4"> Antipasti </h3>
 {% for entree in entrees %}
     <li class="list-group-item d-flex justify-content-around m-3">
-        <span class="col-3 text-nowrap"> {{ entree.name }} </span> <!-- name -->
+        <span class="col-3"> {{ entree.name }} </span> <!-- name -->
         <!-- <span class="col-3 d-none d-md-block"> {{ entree.description }} </span>  ALLERGENS -->
-        <!-- <span class="col-3 d-none d-sm-block text-end"> {{ entree.price_to_public }} </span>  DO I NEED TO PUT THE PRICE?? -->
+        <span class="col-3 text-end"> {{ entree.price }} </span>
     </li>
 {% endfor %}
 <h3 class="text-center fs-3 mx-auto p-4"> Primi Piatti </h3>
 {% for first_dish in first_dishes %}
     <li class="list-group-item d-flex justify-content-around m-3">
-        <span class="col-3 text-nowrap"> {{ first_dish.name }} </span> <!-- name -->
+        <span class="col-3"> {{ first_dish.name }} </span> <!-- name -->
         <!-- <span class="col-3 d-none d-md-block"> {{ entree.description }} </span>  ALLERGENS -->
-        <!-- <span class="col-3 d-none d-sm-block text-end"> {{ entree.price_to_public }} </span>  DO I NEED TO PUT THE PRICE?? -->
+        <span class="col-3 text-end"> {{ first_dish.price }} </span> 
     </li>
 {% endfor %}
 <h3 class="text-center fs-3 mx-auto p-4"> Secondi Piatti </h3>
 {% for second_dish in second_dishes %}
     <li class="list-group-item d-flex justify-content-around m-3">
-        <span class="col-3 text-nowrap"> {{ second_dish.name }} </span> <!-- name -->
+        <span class="col-3"> {{ second_dish.name }} </span> <!-- name -->
         <!-- <span class="col-3 d-none d-md-block"> {{ entree.description }} </span>  ALLERGENS -->
-        <!-- <span class="col-3 d-none d-sm-block text-end"> {{ entree.price_to_public }} </span>  DO I NEED TO PUT THE PRICE?? -->
+        <span class="col-3 text-end"> {{ second_dish.price }} </span>  
     </li>
 {% endfor %}
 <h3 class="text-center fs-3 mx-auto p-4"> Contorni </h3>
 {% for side_dish in side_dishes %}
     <li class="list-group-item d-flex justify-content-around m-3">
-        <span class="col-3 text-nowrap"> {{ side_dish.name }} </span> <!-- name -->
+        <span class="col-3"> {{ side_dish.name }} </span> <!-- name -->
         <!-- <span class="col-3 d-none d-md-block"> {{ entree.description }} </span>  ALLERGENS -->
-        <!-- <span class="col-3 d-none d-sm-block text-end"> {{ entree.price_to_public }} </span>  DO I NEED TO PUT THE PRICE?? -->
+        <span class="col-3 text-end"> {{ side_dish.price }} </span>  
     </li>
 {% endfor %}
 <h3 class="text-center fs-3 mx-auto p-4"> Dolci </h3>
 {% for dessert in desserts %}
     <li class="list-group-item d-flex justify-content-around m-3">
-        <span class="col-3 text-nowrap"> {{ dessert.name }} </span> <!-- name -->
+        <span class="col-3"> {{ dessert.name }} </span> <!-- name -->
         <!-- <span class="col-3 d-none d-md-block"> {{ entree.description }} </span>  ALLERGENS -->
-        <!-- <span class="col-3 d-none d-sm-block text-end"> {{ entree.price_to_public }} </span>  DO I NEED TO PUT THE PRICE?? -->
+        <span class="col-3 text-end"> {{ dessert.price }} </span>  
     </li>
 {% endfor %}
 
