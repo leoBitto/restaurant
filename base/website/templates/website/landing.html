@@ -3,26 +3,31 @@
 
 {% block content %} 
 
-<div class="d-flex flex-column justify-content-around" style=" min-height:90vh">
+<div class="d-flex flex-column justify-content-around" style="max-height:90vh; min-height:90vh">
     <!-- CAROUSEL -->
-    <section id="carousel" class="carousel slide carousel-dark m-3 px-3" data-bs-ride="carousel">
+    <section id="carousel" style="width:100%; height:50vh;" class="carousel slide carousel-light px-3" data-bs-ride="carousel">
         
-        <div class="carousel-inner" style="width:100%; height:100%;">
+        <div class="carousel-inner"><!-- style="width:100%; height:50vh;">-->
 
             <!-- FIRST IMAGE -->
-            <div class="carousel-item active " style="width:100%; height:40vh;" data-bs-interval="4000">
-                <img src="{{ first_image.img.url }}" class="d-block w-100 " style="width:100%; height:100%; object-fit:contain">
-                <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-item active" data-bs-interval="4000">
+                <div class="d-flex justify-content-center align-items-center" >
+                    <img src="{{ first_image.img.url }}" style="width:100%; height:50vh; object-fit:contain">
+                </div>
+                <div class="carousel-caption d-none d-md-block text-dark">
                     <h5>{{ first_image.header }}</h5>
                     <p>{{ first_image.description }}</p>
                 </div>
             </div>
+            
 
             <!-- REST OF THE IMAGES -->
             {% for image in images %}
 
-            <div class="carousel-item " style="width:100%; height:40vh;" data-bs-interval="4000">
-                <img src="{{ image.img.url }}" class="d-block w-100 "  style="width:100%; height:100%; object-fit:contain">
+            <div class="carousel-item" data-bs-interval="4000">
+                <div class="d-flex justify-content-center align-items-center">
+                    <img src="{{ image.img.url }}"   style="width:100%; height:50vh; object-fit:contain">
+                </div>
                 <div class="carousel-caption d-none d-md-block">
                     <h5>{{ image.header }}</h5>
                     <p>{{ image.description }}</p>
@@ -46,29 +51,29 @@
     </section>
 
 
-    <div class="d-flex flex-column flex-md-row justify-content-around text-center">
+    <div style="width:100%; height:30vh;" class="d-flex flex-column flex-md-row justify-content-around text-center">
         <!-- LOCATION -->
-        <div class="d-flex flex-column m-auto mt-3">
+        <div class="m-auto">
             <h6> INDIRIZZO  </h6>
-            <span> Via del Molino, 87 </span>
-            <span> 50041 Calenzano FIRENZE</span>
+            <p> Via del Molino, 87 </p>
+            <p> 50041 Calenzano FIRENZE</p>
         </div>
         <!-- END - LOCATION -->
 
         <!-- CONTACTS -->
-        <div class="d-flex flex-column m-auto mt-3">
+        <div class="m-auto">
             <h6> CONTATTI  </h6>
-            <span> {{ contacts.phone }} </span>
-            <span> {{ contacts.mail }} </span>
+            <p> {{ contacts.phone }} </p>
+            <p> {{ contacts.mail }} </p>
         </div>
         <!-- END - CONTACTS -->
 
         <!-- OPENING HOURS -->
-        <div class="d-flex flex-column m-auto mt-3">
+        <div class="m-auto ">
             <h6> ORARI D'APERTURA  </h6>
-            <span> LUN - VEN | {{opening_hours.weekdays}} </span>
-            <span> SAB - DOM | {{opening_hours.weekend}} </span>
-            <span> CHIUSI IL : {{opening_hours.closing_day}} </span>
+            <p> LUN - VEN | {{opening_hours.weekdays}} </p>
+            <p> SAB - DOM | {{opening_hours.weekend}} </p>
+            <p> CHIUSI IL : {{opening_hours.closing_day}} </p>
         </div>
         <!-- END - OPENING HOURS -->
     </div>
