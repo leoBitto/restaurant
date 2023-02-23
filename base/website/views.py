@@ -66,6 +66,8 @@ def business_menu(request):
     desserts = menu.dessert.all()
 
     title = "Menù del pranzo"
+    description = "due portate a scelta 23€"
+    description2 = "tre portate a scelta 33€"
 
     context={
         'entrees':entrees,
@@ -74,8 +76,9 @@ def business_menu(request):
         'side_dishes':side_dishes,
         'desserts':desserts,
         'title':title,
+        'description':description,
+        'description2':description2,
     }
-
 
     return render(request, 'website/menu.html', context)
 

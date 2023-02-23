@@ -1,14 +1,12 @@
-
-
-/* On screens that are 526px or more,  
-@media screen and (min-width: 526px) {
   
-  .carousel-item{
-    height: 70vh;
-  }
-
+@font-face {
+  font-family: 'Quicksand_Book';
+  src: local('Quicksand_Book'),
+       url('../fonts/Quicksand_Book.otf') format("opentype");
+  
 }
 
-
-*/
-  
+body {
+  font-family: 'Quicksand_Book', Fallback, sans-serif;
+  font-size: 1.3rem;
+}
