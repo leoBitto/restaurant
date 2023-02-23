@@ -10,3 +10,16 @@ body {
   font-family: 'Quicksand_Book', Fallback, sans-serif;
   font-size: 1.3rem;
 }
+
+#call_link{
+  text-decoration: none;
+  color:black;
+  font-weight: 600;
+}
+
+#call_to_action{
+  position:fixed;
+  bottom: 80px;
+  right: 20px;
+  background:white;
+}

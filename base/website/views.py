@@ -43,6 +43,9 @@ def menu(request):
 
     title = "Il Nostro Menù"
 
+    phone = Contact.objects.all()[0]
+
+
     context={
         'entrees':entrees,
         'first_dishes':first_dishes,
@@ -50,6 +53,7 @@ def menu(request):
         'side_dishes':side_dishes,
         'desserts':desserts,
         'title':title,
+        'phone':phone.phone,
     }
 
     return render(request, 'website/menu.html', context)
