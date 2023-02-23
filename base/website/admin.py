@@ -53,7 +53,7 @@ class DessertAdmin(admin.ModelAdmin):
 
 
 class MenuAdmin(admin.ModelAdmin):
-    list_display=('id','pub_date')
+    list_display=('title','pub_date')
     
     
 class BusinessMenuAdmin(admin.ModelAdmin):

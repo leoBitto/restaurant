@@ -3,7 +3,7 @@
 
 {% block content %} 
 
-<div class="d-flex flex-column justify-content-around" style="max-height:90vh; min-height:90vh">
+<div class="d-flex flex-column justify-content-around" style="min-height:90vh">
     <!-- CAROUSEL -->
     <section id="carousel" style="width:100%; height:50vh;" class="carousel slide carousel-light px-3" data-bs-ride="carousel">
         
@@ -51,9 +51,9 @@
     </section>
 
 
-    <div style="width:100%; height:30vh;" class="d-flex flex-column flex-md-row justify-content-around text-center">
+    <div style="width:100%; " class="d-flex flex-column flex-md-row justify-content-around text-center">
         <!-- LOCATION -->
-        <div class="m-auto">
+        <div class="m-auto col-md-4">
             <h6 class="fw-bold"> INDIRIZZO  </h6>
             <p> Via del Molino, 87 </p>
             <p> 50041 Calenzano FIRENZE</p>
@@ -61,7 +61,7 @@
         <!-- END - LOCATION -->
 
         <!-- CONTACTS -->
-        <div class="m-auto">
+        <div class="m-auto col-md-4">
             <h6 class="fw-bold"> CONTATTI  </h6>
             <p> {{ contacts.phone }} </p>
             <p> {{ contacts.mail }} </p>
@@ -69,7 +69,7 @@
         <!-- END - CONTACTS -->
 
         <!-- OPENING HOURS -->
-        <div class="m-auto ">
+        <div class="m-auto col-md-4">
             <h6 class="fw-bold"> ORARI D'APERTURA  </h6>
             <p> LUN - VEN | {{opening_hours.weekdays}} </p>
             <p> SAB - DOM | {{opening_hours.weekend}} </p>

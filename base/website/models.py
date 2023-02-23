@@ -22,6 +22,7 @@ class Contact(models.Model):
     def __str__(self):
         return "Contacts"
 
+
 class Opening_hour(models.Model):
     weekdays = models.CharField(max_length = 200, blank=True, null=True)
     weekend = models.CharField(max_length=300, blank=True, null=True)
@@ -29,6 +30,7 @@ class Opening_hour(models.Model):
     
     def __str__(self):
         return "Opening hours"
+
 
 class Entree(models.Model):
     name = models.CharField(max_length=100, null=True)
@@ -85,6 +87,9 @@ class Dessert(models.Model):
 
 
 class Menu(models.Model):
+    
+    title = models.CharField(max_length=100, default="Il Nostro Menù", blank=True,)
+
     entree = models.ManyToManyField(Entree, blank = True)
     first_dish = models.ManyToManyField(First_dish, blank = True)
     second_dish = models.ManyToManyField(Second_dish, blank = True)
@@ -92,9 +97,13 @@ class Menu(models.Model):
     dessert = models.ManyToManyField(Dessert, blank = True)
     pub_date = models.DateField(auto_now=True, editable=True)
     
+    
     class Meta:
         ordering = ['-pub_date']
         verbose_name_plural = 'Menues'
+    
+    def __str__(self):
+        return self.title
     
 
 class Business_Menu(models.Model):

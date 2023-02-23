@@ -41,7 +41,7 @@ def menu(request):
     side_dishes = menu.side_dish.all()
     desserts = menu.dessert.all()
 
-    title = "Il Nostro Menù"
+    title = menu.title
 
     phone = Contact.objects.all()[0]
 
