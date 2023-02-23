@@ -23,3 +23,7 @@ body {
   right: 20px;
   background:white;
 }
+
+.boldest{
+  font-weight: 900;
+}

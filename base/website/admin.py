@@ -57,7 +57,7 @@ class MenuAdmin(admin.ModelAdmin):
     
     
 class BusinessMenuAdmin(admin.ModelAdmin):
-    list_display=('id','pub_date')
+    list_display=('id', 'opzione1', 'opzione2',)
     
 
 

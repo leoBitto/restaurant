@@ -107,15 +107,10 @@ class Menu(models.Model):
     
 
 class Business_Menu(models.Model):
-    entree = models.ManyToManyField(Entree, blank = True)
-    first_dish = models.ManyToManyField(First_dish, blank = True)
-    second_dish = models.ManyToManyField(Second_dish, blank = True)
-    side_dish = models.ManyToManyField(Side_dish, blank = True)
-    dessert = models.ManyToManyField(Dessert, blank = True)
-    pub_date = models.DateField(auto_now=True, editable=True)
+    opzione1 = models.CharField(max_length=300, blank=True)
+    opzione2 = models.CharField(max_length=300, blank=True)
     
     class Meta:
-        ordering = ['-pub_date']
         verbose_name_plural = 'Business_Menues'
 
 
