@@ -8,9 +8,10 @@ from website.models import *
 ## landing
 def landing(request):
 
-    #images NEED TO BE OPTIMIZED
+    #images 
     first_image = Gallery_image.objects.filter(is_first=True).first()
     images = Gallery_image.objects.filter(is_first=False)
+
     num_of_images = images.count()+1
     
     #contacts

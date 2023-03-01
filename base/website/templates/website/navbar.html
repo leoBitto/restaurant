@@ -5,7 +5,11 @@
 <!-- -->
 <nav class="navbar navbar-expand-sm navbar-ligth px-sm-5 px-0"  style="min-height:10vh; z-index:1000;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'landing' %}">Molino</a>
+
+    <a class="navbar-brand" href="{% url 'landing' %}">
+      <img src="{% static 'favicon/bitmap.svg' %}" alt="Molino" width="150" height="60">
+    </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
