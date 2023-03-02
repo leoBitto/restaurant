@@ -12,7 +12,7 @@
             <!-- FIRST IMAGE -->
             <div class="carousel-item active" data-bs-interval="4000">
                 <div class="d-flex justify-content-center align-items-center" >
-                    <img src="{{ first_image.img.url }}" style="width:100%; height:50vh; object-fit:contain">
+                    <img src="{% static first_image.img.url %}" style="width:100%; height:50vh; object-fit:contain">
                 </div>
                 <div class="carousel-caption d-none d-md-block text-dark">
                     <h5>{{ first_image.header }}</h5>
