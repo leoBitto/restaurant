@@ -7,12 +7,12 @@
     <!-- CAROUSEL -->
     <section id="carousel" style="width:100%; height:50vh;" class="carousel slide carousel-light px-3" data-bs-ride="carousel">
         
-        <div class="carousel-inner"><!-- style="width:100%; height:50vh;">-->
+        <div class="carousel-inner">
 
             <!-- FIRST IMAGE -->
             <div class="carousel-item active" data-bs-interval="4000">
                 <div class="d-flex justify-content-center align-items-center" >
-                    <img src="{% static first_image.img.url %}" style="width:100%; height:50vh; object-fit:contain">
+                    <img src="{{ first_image.img.url }}" style="width:100%; height:50vh; object-fit:contain">
                 </div>
                 <div class="carousel-caption d-none d-md-block text-dark">
                     <h5>{{ first_image.header }}</h5>
@@ -26,7 +26,7 @@
 
             <div class="carousel-item" data-bs-interval="4000">
                 <div class="d-flex justify-content-center align-items-center">
-                    <img src="{% static image.img.url %}"   style="width:100%; height:50vh; object-fit:contain">
+                    <img src="{{ image.img.url }}"   style="width:100%; height:50vh; object-fit:contain">
                 </div>
                 <div class="carousel-caption d-none d-md-block">
                     <h5>{{ image.header }}</h5>

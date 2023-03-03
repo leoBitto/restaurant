@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 admin.site.site_header = "MOLINO Administation Portal"
 admin.site.site_title = "MOLINO Admin Portal"
 admin.site.index_title = "Welcome to MOLINO Administation Portal"
@@ -25,4 +26,7 @@ admin.site.index_title = "Welcome to MOLINO Administation Portal"
 urlpatterns = [
     path('', include('website.urls')),
     path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
