@@ -14,9 +14,13 @@
                 <div class="d-flex justify-content-center align-items-center" >
                     <img src="{{ first_image.img.url }}" style="width:100%; height:50vh; object-fit:contain">
                 </div>
-                <div class="carousel-caption d-none d-md-block text-dark">
+                <div class="carousel-caption d-none d-md-block text-dark fw-bold">
+                    {% if first_image.header %}
                     <h5>{{ first_image.header }}</h5>
+                    {% endif %}
+                    {% if first_image.description %}
                     <p>{{ first_image.description }}</p>
+                    {% endif %}
                 </div>
             </div>
             
@@ -28,9 +32,13 @@
                 <div class="d-flex justify-content-center align-items-center">
                     <img src="{{ image.img.url }}"   style="width:100%; height:50vh; object-fit:contain">
                 </div>
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-none d-md-block text-dark fw-bold">
+                    {% if image.header %}
                     <h5>{{ image.header }}</h5>
+                    {% endif %}
+                    {% if image.description %}
                     <p>{{ image.description }}</p>
+                    {% endif %}
                 </div>
             </div>
 
