@@ -15,6 +15,11 @@ import os
 from django.core.management.utils import get_random_secret_key
 import sys
 import dj_database_url
+import environ
+
+#environ vars
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-g#@z7fa9&e(9pl$5_!&-b@t^rlz99ys3&3%ihph3oie$9ap)zm'
-SECRET_KEY = "z-yN{_8)!c.R<A+[`gCX'PhFXvNPa598"
+SECRET_KEY = env('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -34,7 +39,7 @@ SECRET_KEY = "z-yN{_8)!c.R<A+[`gCX'PhFXvNPa598"
 DEBUG = False
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "46.101.129.105", "www.molinotrattoria.it"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "46.101.129.105", "www.molinotrattoria.it", 'molinotrattoria.it']
 
 
 
@@ -54,7 +59,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -96,9 +100,9 @@ WSGI_APPLICATION = 'base.wsgi.application'
 DATABASES = {
     'default':{
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'restaurant',
-        'USER':'leo',
-        'PASSWORD':'bepcakacpu91',
+        'NAME':env('NAME'),
+        'USER':env('USER'),
+        'PASSWORD':env('PASSWORD'),
         'HOST':'localhost',
         'PORT':'',
     }
